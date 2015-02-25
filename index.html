@@ -1,0 +1,274 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multistep Form</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+  </head>
+  <body>
+    
+    <div class="row">
+      <div class="large-2 medium-2 columns">
+        &nbsp;
+      </div>
+      <div class="large-8 medium-8 columns">
+        <h1>Multistep Form</h1>
+      </div>
+      <div class="large-2 medium-2 columns">
+        &nbsp;
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="large-2 medium-2 columns">
+        &nbsp;
+      </div>
+      <div class="large-8 medium-8 columns">
+
+
+        <form id="payment_online">
+          <!--STEP ONE-->
+          <div id="step1">            
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <h4>Responsable de la Inscripci&oacute;n</h4>
+                <input type="hidden" value="Responsable de la Inscripci&oacute;n"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="text" placeholder="Nombre Completo" name="name" id="name" class="required"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="text" placeholder="E-mail" name="email" id="email" class="required validEmail"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="text" placeholder="Puesto" name="job" id="job"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="text" placeholder="Empresa" name="business" id="business" class="required"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="text" placeholder="Tel&eacute;fono" name="telephone" id="telephone" class="required"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <label>No. De Participantes a Inscribir</label>
+                <select id="numberParticipants">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <div class="error"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <a class="small button" id="btnNext_step1">Siguiente</a>
+              </div>
+            </div>
+          </div>
+          <!--end - STEP ONE-->
+          <!--STEP TWO-->
+          <div id="step2" class="step_hidden">
+            <div id="participants">
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <div class="error"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-2 medium-2 columns">
+                <a class="small secondary button" id="btnPrevious_step2">Anterior</a>
+              </div>
+              <div class="large-10 medium-10 columns">
+                <a class="small button" id="btnNext_step2">Siguiente</a>
+              </div>
+            </div>        
+          </div>
+          <!--end - STEP TWO-->
+          <!--STEP THREE-->
+          <div id="step3" class="step_hidden">
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <h4>Facturaci&oacute;n</h4>
+                <input type="hidden" value="Facturaci&oacute;n"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="text" placeholder="Factura a Nombre de:" name="name_invoice" id="name_invoice" class="required"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="text" placeholder="NIT" name="nit_invoice" id="nit_invoice" class="required"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="text" placeholder="Dirección Fiscal" name="address_invoice" id="address_invoice" class="required"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="text" placeholder="Contacto" name="contact_invoice" id="contact_invoice" class="required"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="text" placeholder="Email Del Responsable Del Pago" name="email_invoice" id="email_invoice" class="required validEmail"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="text" placeholder="Teléfono" name="telephone_invoice" id="telephone_invoice" class="required"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="text" placeholder="Horarios de Atención" name="time_invoice" id="time_invoice" class="required"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <div class="error"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-2 medium-2 columns">
+                <a class="small secondary button" id="btnPrevious_step3">Anterior</a>
+              </div>
+              <div class="large-10 medium-10 columns">
+                <a class="small button" id="btnNext_step3">Siguiente</a>
+              </div>
+            </div>        
+          </div>
+          <!--end - STEP THREE-->
+          <!--STEP FOUR-->
+          <div id="step4" class="step_hidden">
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <h4>Resumen</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <div id="summary">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-2 medium-2 columns">
+                <a class="small secondary button" id="btnPrevious_step4">Anterior</a>
+              </div>
+              <div class="large-10 medium-10 columns">
+                <a class="small button" id="btnNext_step4">Datos Verificados</a>
+              </div>
+            </div> 
+          </div>
+          <!--end - STEP FOUR-->
+          <!--STEP FIVE-->
+          <div id="step5" class="step_hidden">
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <h4>Medio de Pago</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="radio" name="payment" value="Cheque" id="check_payment">
+                <label for="check_payment">Cheque</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="radio" name="payment" value="D&eacute;posito a Cuenta" id="deposit_payment">
+                <label for="deposit_payment">D&eacute;posito a Cuenta</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="radio" name="payment" value="Transferencia Electronica" id="transfer_payment">
+                <label for="transfer_payment">Transferencia Electronica</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="radio" name="payment" value="Tarjeta de Cr&eacute;dito o D&eacute;bito" id="creditDebitCard_payment" checked>
+                <label for="creditDebitCard_payment">Tarjeta de Cr&eacute;dito o D&eacute;bito</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-10 medium-10 columns">
+                <a class="small button" id="btnNext_step5">Pagar</a>
+              </div>
+            </div> 
+          </div>
+
+          
+          <!--end - STEP FIVE-->
+          <!--STEP SIX-->
+          <div id="step6" class="step_hidden">
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <h4>Pago</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+              </div>
+            </div>
+            <div class="row">
+              <!--
+              <div class="large-2 medium-2 columns">
+                <a class="small secondary button" id="btnPrevious_step6">Anterior</a>
+              </div>
+              -->
+              <div class="large-10 medium-10 columns">
+                <a class="small button" id="btnNext_step6">Pagar</a>
+              </div>
+            </div> 
+          </div>
+          <!--end - STEP SIX-->
+        </form>    
+      </div>
+      <div class="large-2 medium-2 columns">
+        &nbsp;
+      </div>
+    </div>
+    
+    
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="js/compiled.js"></script>
+  </body>
+</html>
