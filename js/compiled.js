@@ -56,7 +56,14 @@ $(document).ready(function() {
 		return_step5=validFields("step5", true);
 		if(return_step5==true){
 			$("#step5").slideUp("slow");
-			$("#step6").slideDown("slow");
+			metodPayment=$('input:radio[name=payment]:checked').val();
+			if(metodPayment=="creditDebitCard_payment"){
+				$("#payment-metod").show();
+			}else{
+				$("#payment-metod").show();
+				$("#payment-metod").html('<div id="response_div" style="text-align:center;"><p><img src="img/ajax-loader.gif" /></p><p>Enviando Correo...</p></div>');
+			}
+			$("#step6").slideDown("slow"); 
 		}
 	});
 });
@@ -125,7 +132,7 @@ function addParticipants(){
 			'<div class="row">'+
 				'<div class="large-12 medium-12 columns">'+
 					'<h4>Participante#'+i+'</h4>'+
-					'<input type="hidden" value="Participante#'+i+'"/>'+
+					'<input type="hidden" value="PARTICIPANTE#'+i+'"/>'+
 				'</div>'+
 			'</div>'+
 			'<div class="row">'+
@@ -188,7 +195,7 @@ function generateSumary(){
 		tipo=$(this).attr("type");
 
 		if(tipo=="hidden"){
-			conca+="<tr><td colspan='2'><strong>"+value+"</strong></td></tr>";
+			conca+="<tr><td colspan='2' style='text-align:center'><strong>"+value+"</strong></td></tr>";
 		}else{
 			conca+="<tr><td>"+name+":</td><td>"+value+"</td></tr>";
 		}

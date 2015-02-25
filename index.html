@@ -35,7 +35,7 @@
             <div class="row">
               <div class="large-12 medium-12 columns">
                 <h4>Responsable de la Inscripci&oacute;n</h4>
-                <input type="hidden" value="Responsable de la Inscripci&oacute;n"/>
+                <input type="hidden" value="RESPONSABLE DE LA INSCRIPCI&Oacute;N"/>
               </div>
             </div>
             <div class="row">
@@ -117,7 +117,7 @@
             <div class="row">
               <div class="large-12 medium-12 columns">
                 <h4>Facturaci&oacute;n</h4>
-                <input type="hidden" value="Facturaci&oacute;n"/>
+                <input type="hidden" value="FACTURACI&Oacute;N"/>
               </div>
             </div>
             <div class="row">
@@ -202,25 +202,25 @@
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="radio" name="payment" value="Cheque" id="check_payment">
+                <input type="radio" name="payment" value="check_payment" id="check_payment">
                 <label for="check_payment">Cheque</label>
               </div>
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="radio" name="payment" value="D&eacute;posito a Cuenta" id="deposit_payment">
+                <input type="radio" name="payment" value="deposit_payment" id="deposit_payment">
                 <label for="deposit_payment">D&eacute;posito a Cuenta</label>
               </div>
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="radio" name="payment" value="Transferencia Electronica" id="transfer_payment">
+                <input type="radio" name="payment" value="transfer_payment" id="transfer_payment">
                 <label for="transfer_payment">Transferencia Electronica</label>
               </div>
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="radio" name="payment" value="Tarjeta de Cr&eacute;dito o D&eacute;bito" id="creditDebitCard_payment" checked>
+                <input type="radio" name="payment" value="creditDebitCard_payment" id="creditDebitCard_payment" checked>
                 <label for="creditDebitCard_payment">Tarjeta de Cr&eacute;dito o D&eacute;bito</label>
               </div>
             </div>
@@ -230,33 +230,53 @@
               </div>
             </div> 
           </div>
-
+        </form>
           
           <!--end - STEP FIVE-->
           <!--STEP SIX-->
           <div id="step6" class="step_hidden">
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <h4>Pago</h4>
+                <div id="payment-metod" class="step_hidden">
+                  <form name="autorizationForm" method="post" action="https://paycom.credomatic.com/PayComBackEndWeb/common/requestPaycomService.go">
+
+                  <br><br>
+                  <!--INICIO FORMULARIO FINAL-->
+                  <input type="hidden" name="username" value="ejacobom201" id="username">
+                  <input type="hidden" name="type" value="auth" id="type">
+                  <input type="hidden" name="key_id" value="27836491" id="key_id">
+                  <input type="hidden" name="hash" value="b2c151dd460f80e3aa41629a92f3410f" id="hash">
+                  <input type="hidden" name="time" value="1424876288" id="time">
+                  <input type="hidden" name="redirect" value="https://ebg.edu.gt/recepcion-pago-credomatic" id="redirect">
+                  <input type="hidden" name="amount" value="0.10" id="amount">
+                  <input type="hidden" name="orderid" value="congreso-1646" id="orderid">
+                  <input type="hidden" name="processor_id" value="RPGT0885" id="processor_id">
+
+
+                  <fieldset>
+                    <legend>Pagar Entrada: Costo de Q.0.10</legend><br>
+                    <label>No. de Tarjeta</label>
+                    <input type="text" name="ccnumber" value="" id="ccnumber">
+
+                    <label>Fecha Expiración</label>
+                    <input type="text" name="ccexp" value="" id="ccexp" placeholder="MMYY">
+
+                    <label>CVV</label>
+                    <input type="text" name="cvv" value="" id="cvv">
+
+                    <input type="submit" name="edSubmit"  class="small button" value="Pagar"><br><br>
+
+                    <p>Una vez realices tu pago, serás redirigido a otra sección para enviar tus datos!</p>
+                  </fieldset>
+
+                  <!--TERMINA FORMULARIO FINAL-->
+                  </form>
+                </div>
               </div>
             </div>
-            <div class="row">
-              <div class="large-12 medium-12 columns">
-              </div>
-            </div>
-            <div class="row">
-              <!--
-              <div class="large-2 medium-2 columns">
-                <a class="small secondary button" id="btnPrevious_step6">Anterior</a>
-              </div>
-              -->
-              <div class="large-10 medium-10 columns">
-                <a class="small button" id="btnNext_step6">Pagar</a>
-              </div>
-            </div> 
           </div>
           <!--end - STEP SIX-->
-        </form>    
+          
       </div>
       <div class="large-2 medium-2 columns">
         &nbsp;
