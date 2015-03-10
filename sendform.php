@@ -27,33 +27,39 @@ function send_mail($to, $subject, $message, $from = '', $fromname = ''){
 			return false;
 		}
 }
-$message = '<table style="text-align: center; width: 465px; height: 575px;" border="0">
-<tbody style="text-align: left;">
-<tr style="text-align: left;">
-<td style="text-align: left;"><strong style=" font-weight:"><b>Formulario de Contacto</b></strong></td>
-</tr>
-<tr style="text-align: left;">
-<td style="text-align: left;"><b>Nombre y Apellidos:</b></td>
-<td style="text-align: left;">'.$_POST['pname'].'</td>
-</tr>
-<tr style="text-align: left;">
-<td style="text-align: left;"><b>Email:</b></td>
-<td style="text-align: left;">'.$_POST['pemail'].'</td> 
-</tr>
-<tr style="text-align: left;">
-<td style="text-align: left;"><b>Recibir Informaci&oacute;n de IDC:</b></td>
-<td style="text-align: left;">'.$_POST['pmessage'].'</td>
-</tr>
-</tbody>
-</table>'; 
-/*asesores@grupoidc.com*/ 
-if(send_mail('jchavezlopez9@gmail.com', 'Formulario de Contacto PROYECTO', $message, 'asesores@umg.com.gt', 'Proyecto 1')){
-	$msg=true;
-	//$msg = 'Thank you!, your message has been sent.';
-}else{
-	$msg=false;
-	//$msg = 'Your message could not been sent, please try again later.';
+
+
+foreach ($_POST as $key=>$value){
+	$data[$key]=$value;
 }
+
+$message = $data["html"]; 
+
+
+$postNameArr = array('email', 'email_invoice', 'email_participant_1', 'email_participant_2', 'email_participant_3', 'email_participant_4', 'email_participant_5', 'email_participant_6', 'email_participant_7', 'email_participant_8', 'email_participant_9', 'email_participant_10');        
+$postIdentifierArr = array();
+    
+foreach ($postNameArr as $postName){
+    if (array_key_exists($postName, $_POST)){
+         $postIdentifierArr[] = $postName;
+    }
+}
+
+$msg="";
+for ($i=0; $i <= count($postIdentifierArr); $i++) { 
+	$identify=$postIdentifierArr[$i];
+	$emailTo=$data[$identify];
+		if(send_mail($emailTo, 'EBG', $message, 'info@ebg.edu.gt', 'EBG Formulario')){
+			$msg='1';
+		}else{
+			$msg='0';
+		}
+}
+    
+
+
+
+	//echo $msg;
 	die($msg);
-//header('Location: '.$fromPageURL.'?msg='.urlencode($msg));
+
 ?>

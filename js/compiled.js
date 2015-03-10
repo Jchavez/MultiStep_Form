@@ -1,4 +1,8 @@
 $(document).ready(function() {
+	/*$('.active form').card({
+        container: $('.card-wrapper')
+    });*/
+
 	$("div.step_hidden").each(function(index) {
 		$(this).css({'display':'none'});
 	});
@@ -23,7 +27,6 @@ $(document).ready(function() {
 			$("#step2").slideUp("slow");
 			$("#step3").slideDown("slow");
 		}
-		
 	});
 	//Step3
 	$("#btnPrevious_step3").click(function () {
@@ -62,8 +65,41 @@ $(document).ready(function() {
 			}else{
 				$("#payment-metod").show();
 				$("#payment-metod").html('<div id="response_div" style="text-align:center;"><p><img src="img/ajax-loader.gif" /></p><p>Enviando Correo...</p></div>');
-			}
-			$("#step6").slideDown("slow"); 
+
+				dataform=serializeForm("#payment_online :input.validEmail");
+				var summary=$("#summary").html();
+				dataform+="html="+summary;	
+				/*DESCOMENTAR EN LIVE*/	
+				/*$.ajax({
+				   type: "POST", 
+				   url: "sendform.php",
+				   data:dataform,
+				   success: function(msg){ 
+					   if(msg){
+						 $("#payment-metod").html('<div id="response_div" style="text-align:center;">&iexcl;Gracias!, su mensaje ha sido enviado.<br /></div>');
+					   }else{
+						 $("#payment-metod").html('<div id="response_div" style="text-align:center;">Su mensaje NO a sido enviado, por favor intente mas tarde.</div>');
+					   }
+				   }
+				 });*/
+			}	
+
+			
+			conc=serializeForm("#payment_online :input");
+			$.ajax({
+			   type: "POST", 
+			   url: "savedata.php",
+			   data:conc,
+			   success: function(msg){ 
+				   if(msg){
+						//$("#payment-metod").html('<div id="response_div">&iexcl;Gracias!, su mensaje ha sido enviado.<br /></div>');
+				   }else{
+						//$("#payment-metod").html('<div id="response_div">Su mensaje NO a sido enviado, por favor intente mas tarde.</div>');
+				   }
+			   }
+			});
+			
+			$("#step6").slideDown("slow");		
 		}
 	});
 });
@@ -137,37 +173,44 @@ function addParticipants(){
 			'</div>'+
 			'<div class="row">'+
 				'<div class="large-12 medium-12 columns">'+
-					'<input type="text" placeholder="Nombre" name="name_participant_'+i+'" id="name_participant_'+i+'" class="required"/>'+
+					'<label>Nombre</label>'+
+					'<input type="text" placeholder="" name="name_participant_'+i+'" id="name_participant_'+i+'" class="required"/>'+
 				'</div>'+
 			'</div>'+
 			'<div class="row">'+
 				'<div class="large-12 medium-12 columns">'+
-					'<input type="text" placeholder="Puesto" name="job_participant_'+i+'" id="job_participant_'+i+'"/>'+
+					'<label>Puesto</label>'+
+					'<input type="text" placeholder="" name="job_participant_'+i+'" id="job_participant_'+i+'"/>'+
 				'</div>'+
 			'</div>'+
 			'<div class="row">'+
 				'<div class="large-12 medium-12 columns">'+
-					'<input type="text" placeholder="Direcci&oacute;n" name="address_participant_'+i+'" id="address_participant_'+i+'" class="required"/>'+
+					'<label>Direcci&oacute;n</label>'+
+					'<input type="text" placeholder="" name="address_participant_'+i+'" id="address_participant_'+i+'" class="required"/>'+
 				'</div>'+
 			'</div>'+
 			'<div class="row">'+
 				'<div class="large-12 medium-12 columns">'+
-					'<input type="text" placeholder="Pa&iacute;s" name="country_participant_'+i+'" id="country_participant_'+i+'" class="required"/>'+
+					'<label>Pa&iacute;s</label>'+
+					'<input type="text" placeholder="" name="country_participant_'+i+'" id="country_participant_'+i+'" class="required"/>'+
 				'</div>'+
 			'</div>'+
 			'<div class="row">'+
 				'<div class="large-12 medium-12 columns">'+
-					'<input type="text" placeholder="Tel&eacute;fono" name="telephone_participant_'+i+'" id="telephone_participant_'+i+'" class="required"/>'+
+					'<label>Tel&eacute;fono</label>'+
+					'<input type="text" placeholder="" name="telephone_participant_'+i+'" id="telephone_participant_'+i+'" class="required"/>'+
 				'</div>'+
 			'</div>'+
 			'<div class="row">'+
 				'<div class="large-12 medium-12 columns">'+
-					'<input type="text" placeholder="Celular" name="cel_participant_'+i+'" id="cel_participant_'+i+'"/>'+
+					'<label>Celular</label>'+
+					'<input type="text" placeholder="" name="cel_participant_'+i+'" id="cel_participant_'+i+'"/>'+
 				'</div>'+
 			'</div>'+
 			'<div class="row">'+
 				'<div class="large-12 medium-12 columns">'+
-					'<input type="text" placeholder="E-mail" name="email_participant_'+i+'" id="email_participant_'+i+'" class="required validEmail"/>'+
+					'<label>E-mail</label>'+
+					'<input type="text" placeholder="" name="email_participant_'+i+'" id="email_participant_'+i+'" class="required validEmail"/>'+
 				'</div><hr>'+
 			'</div>';
 		};
@@ -191,7 +234,8 @@ function generateSumary(){
 	conca="<table><tbody>";
 	jQuery("form#payment_online input[type='text'], form#payment_online input[type='hidden']").each(function(key, value) {
 		value = $(this).val();
-		name= $(this).attr("placeholder");
+		//name= $(this).attr("placeholder");
+		name=$(this).prev().text();
 		tipo=$(this).attr("type");
 
 		if(tipo=="hidden"){
@@ -202,4 +246,15 @@ function generateSumary(){
 	});
 	conca+="</tbody></table>";
 	$("#summary").html(conca);
+}
+
+
+/*==Serialize Form==*/
+function serializeForm(fieldType){
+	var fields = $(fieldType).serializeArray();
+	var conc="";
+	$.each(fields, function(i, field) {
+		conc+=field.name + "="+field.value+"&";
+	});
+	return conc;
 }

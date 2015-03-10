@@ -6,6 +6,7 @@
     <title>Multistep Form</title>
     <link rel="stylesheet" href="css/foundation.css" />
     <script src="js/vendor/modernizr.js"></script>
+    <link rel="stylesheet" href=" lib/css/card.css">
   </head>
   <body>
     
@@ -14,21 +15,18 @@
         &nbsp;
       </div>
       <div class="large-8 medium-8 columns">
-        <h1>Multistep Form</h1>
+        <!--<h1>Multistep Form</h1>-->
       </div>
       <div class="large-2 medium-2 columns">
         &nbsp;
       </div>
     </div>
 
-
     <div class="row">
       <div class="large-2 medium-2 columns">
         &nbsp;
       </div>
       <div class="large-8 medium-8 columns">
-
-
         <form id="payment_online">
           <!--STEP ONE-->
           <div id="step1">            
@@ -40,33 +38,38 @@
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="text" placeholder="Nombre Completo" name="name" id="name" class="required"/>
+                <label>E-mail</label>
+                <input type="text" placeholder="" name="email" id="email" class="required validEmail"/>
               </div>
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="text" placeholder="E-mail" name="email" id="email" class="required validEmail"/>
+                <label>Nombre Completo</label>
+                <input type="text" placeholder="" name="name" id="name" class="required"/>
               </div>
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="text" placeholder="Puesto" name="job" id="job"/>
+                <label>Puesto</label>
+                <input type="text" placeholder="" name="job" id="job"/>
               </div>
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="text" placeholder="Empresa" name="business" id="business" class="required"/>
+                <label>Empresa</label>
+                <input type="text" placeholder="" name="business" id="business" class="required"/>
               </div>
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="text" placeholder="Tel&eacute;fono" name="telephone" id="telephone" class="required"/>
+                <label>Tel&eacute;fono</label>
+                <input type="text" placeholder="" name="telephone" id="telephone" class="required"/>
               </div>
             </div>
             <div class="row">
               <div class="large-12 columns">
                 <label>No. De Participantes a Inscribir</label>
-                <select id="numberParticipants">
+                <select id="numberParticipants" name="numberParticipants">
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -122,37 +125,38 @@
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="text" placeholder="Factura a Nombre de:" name="name_invoice" id="name_invoice" class="required"/>
+                <label>Factura a Nombre de:</label>
+                <input type="text" placeholder="" name="name_invoice" id="name_invoice" class="required"/>
               </div>
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="text" placeholder="NIT" name="nit_invoice" id="nit_invoice" class="required"/>
+                <label>NIT</label>
+                <input type="text" placeholder="" name="nit_invoice" id="nit_invoice" class="required"/>
               </div>
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="text" placeholder="Dirección Fiscal" name="address_invoice" id="address_invoice" class="required"/>
+                <label>Dirección Fiscal</label>
+                <input type="text" placeholder="" name="address_invoice" id="address_invoice" class="required"/>
               </div>
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="text" placeholder="Contacto" name="contact_invoice" id="contact_invoice" class="required"/>
+                <label>Contacto</label>
+                <input type="text" placeholder="" name="contact_invoice" id="contact_invoice" class="required"/>
               </div>
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="text" placeholder="Email Del Responsable Del Pago" name="email_invoice" id="email_invoice" class="required validEmail"/>
+                <label>Email Del Responsable Del Pago</label>
+                <input type="text" placeholder="" name="email_invoice" id="email_invoice" class="required validEmail"/>
               </div>
             </div>
             <div class="row">
               <div class="large-12 medium-12 columns">
-                <input type="text" placeholder="Teléfono" name="telephone_invoice" id="telephone_invoice" class="required"/>
-              </div>
-            </div>
-            <div class="row">
-              <div class="large-12 medium-12 columns">
-                <input type="text" placeholder="Horarios de Atención" name="time_invoice" id="time_invoice" class="required"/>
+                <label>Teléfono</label>
+                <input type="text" placeholder="" name="telephone_invoice" id="telephone_invoice" class="required"/>
               </div>
             </div>
             <div class="row">
@@ -230,52 +234,87 @@
               </div>
             </div> 
           </div>
-        </form>
-          
           <!--end - STEP FIVE-->
-          <!--STEP SIX-->
-          <div id="step6" class="step_hidden">
-            <div class="row">
-              <div class="large-12 medium-12 columns">
-                <div id="payment-metod" class="step_hidden">
-                  <form name="autorizationForm" method="post" action="https://paycom.credomatic.com/PayComBackEndWeb/common/requestPaycomService.go">
+        </form>
 
-                  <br><br>
-                  <!--INICIO FORMULARIO FINAL-->
-                  <input type="hidden" name="username" value="ejacobom201" id="username">
-                  <input type="hidden" name="type" value="auth" id="type">
-                  <input type="hidden" name="key_id" value="27836491" id="key_id">
-                  <input type="hidden" name="hash" value="b2c151dd460f80e3aa41629a92f3410f" id="hash">
-                  <input type="hidden" name="time" value="1424876288" id="time">
-                  <input type="hidden" name="redirect" value="https://ebg.edu.gt/recepcion-pago-credomatic" id="redirect">
-                  <input type="hidden" name="amount" value="0.10" id="amount">
-                  <input type="hidden" name="orderid" value="congreso-1646" id="orderid">
-                  <input type="hidden" name="processor_id" value="RPGT0885" id="processor_id">
+        <!--STEP SIX-->
+        <div id="step6" class="step_hidden">
+          <div class="row">
+            <div class="large-12 medium-12 columns">
+              <div id="payment-metod" class="step_hidden">
+                <div class="demo-container">
+                <div class="card-wrapper"></div>
+                  <div class="form-container active">
+                    
+                    <form name="autorizationForm" method="post" action="https://paycom.credomatic.com/PayComBackEndWeb/common/requestPaycomService.go">
 
+                      <br><br>
+                      <!--INICIO FORMULARIO FINAL-->
+                      <input type="hidden" name="username" value="ejacobom201" id="username">
+                      <input type="hidden" name="type" value="auth" id="type">
+                      <input type="hidden" name="key_id" value="27836491" id="key_id">
+                      <input type="hidden" name="hash" value="b2c151dd460f80e3aa41629a92f3410f" id="hash">
+                      <input type="hidden" name="time" value="1424876288" id="time">
+                      <input type="hidden" name="redirect" value="https://ebg.edu.gt/recepcion-pago-credomatic" id="redirect">
+                      <input type="hidden" name="amount" value="0.10" id="amount">
+                      <input type="hidden" name="orderid" value="congreso-1646" id="orderid">
+                      <input type="hidden" name="processor_id" value="RPGT0885" id="processor_id">
 
-                  <fieldset>
-                    <legend>Pagar Entrada: Costo de Q.0.10</legend><br>
-                    <label>No. de Tarjeta</label>
-                    <input type="text" name="ccnumber" value="" id="ccnumber">
+                    <!--
+                    <fieldset>
+                      <legend>Pagar Entrada: Costo de Q.0.10</legend><br>
 
-                    <label>Fecha Expiración</label>
-                    <input type="text" name="ccexp" value="" id="ccexp" placeholder="MMYY">
+                      <label>No. de Tarjeta</label>
+                      <input type="text" name="ccnumber" value="" id="ccnumber">
 
-                    <label>CVV</label>
-                    <input type="text" name="cvv" value="" id="cvv">
+                      <label>Fecha Expiración</label>
+                      <input type="text" name="ccexp" value="" id="ccexp" placeholder="MMYY">
 
-                    <input type="submit" name="edSubmit"  class="small button" value="Pagar"><br><br>
+                      <label>CVV</label>
+                      <input type="text" name="cvv" value="" id="cvv">
 
-                    <p>Una vez realices tu pago, serás redirigido a otra sección para enviar tus datos!</p>
-                  </fieldset>
+                      <input type="submit" name="edSubmit"  class="small button" value="Pagar"><br><br>
 
-                  <!--TERMINA FORMULARIO FINAL-->
-                  </form>
+                      <p>Una vez realices tu pago, serás redirigido a otra sección para enviar tus datos!</p>
+                    </fieldset>
+                    -->
+                    <div class="row">
+                      <div class="large-12 medium-12 columns">
+                        <label>No. de Tarjeta</label>
+                        <input type="text" name="ccnumber" id="ccnumber" placeholder="Card number">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="large-12 medium-12 columns">
+                        <label>Nombre</label>
+                        <input type="text" name="card_name" id="card_name" placeholder="Full name" >
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="large-12 medium-12 columns">
+                        <label>Fecha Expiración</label>
+                        <input type="text" name="ccexp"  id="ccexp" placeholder="MM/YY">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="large-12 medium-12 columns">
+                        <label>CVV</label>
+                        <input type="text" name="cvv"  id="cvv" placeholder="CVC">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="large-10 medium-10 columns">
+                        <input type="submit" name="edSubmit" value="Pagar" class="small button" id="btnNext_step6">
+                      </div>
+                    </div> 
+                    <!--TERMINA FORMULARIO FINAL-->
+                    </form>
                 </div>
               </div>
             </div>
           </div>
-          <!--end - STEP SIX-->
+        </div>
+        <!--end - STEP SIX-->
           
       </div>
       <div class="large-2 medium-2 columns">
@@ -284,11 +323,18 @@
     </div>
     
     
+    
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
     <script>
       $(document).foundation();
     </script>
     <script src="js/compiled.js"></script>
+    <script src="lib/js/card.js"></script>
+    <script>
+        $('.active form').card({
+            container: $('.card-wrapper')
+        });
+    </script>
   </body>
 </html>
