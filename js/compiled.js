@@ -92,6 +92,7 @@ $(document).ready(function() {
 			   data:conc,
 			   success: function(msg){ 
 				   if(msg){
+				   	alert(msg);
 						//$("#payment-metod").html('<div id="response_div">&iexcl;Gracias!, su mensaje ha sido enviado.<br /></div>');
 				   }else{
 						//$("#payment-metod").html('<div id="response_div">Su mensaje NO a sido enviado, por favor intente mas tarde.</div>');
