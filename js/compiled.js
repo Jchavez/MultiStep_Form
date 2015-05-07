@@ -6,6 +6,18 @@ $(document).ready(function() {
 	$("div.step_hidden").each(function(index) {
 		$(this).css({'display':'none'});
 	});
+	//Step0
+	$("#btnNext_step0").click(function () {
+		optionStep0=$('input:radio[name=optionStep0]:checked').val();
+		if(optionStep0=="participants"){
+			$("#step0").slideUp("slow");
+			$("#step1").slideDown("slow");
+		}else if(optionStep0=="sponsorship"){
+			$("#step0").slideUp("slow");
+			$("#step5").slideDown("slow");
+		}
+	});
+
 	//Step1
 	$("#btnNext_step1").click(function () {
 		return_step1=validFields("step1", true);
@@ -54,9 +66,12 @@ $(document).ready(function() {
 			$("#step5").slideDown("slow");
 		}
 	});
+
 	//Step5
 	$("#btnNext_step5").click(function () {
 		return_step5=validFields("step5", true);
+		
+
 		if(return_step5==true){
 			$("#step5").slideUp("slow");
 			metodPayment=$('input:radio[name=payment]:checked').val();
@@ -76,9 +91,9 @@ $(document).ready(function() {
 				   data:dataform,
 				   success: function(msg){ 
 					   if(msg){
-						 $("#payment-metod").html('<div id="response_div" style="text-align:center;">&iexcl;Gracias!, su mensaje ha sido enviado.<br /></div>');
+						 //$("#payment-metod").html('<div id="response_div" style="text-align:center;">&iexcl;Gracias!, su mensaje ha sido enviado.<br /></div>');
 					   }else{
-						 $("#payment-metod").html('<div id="response_div" style="text-align:center;">Su mensaje NO a sido enviado, por favor intente mas tarde.</div>');
+						 //$("#payment-metod").html('<div id="response_div" style="text-align:center;">Su mensaje NO a sido enviado, por favor intente mas tarde.</div>');
 					   }
 				   }
 				 });*/
@@ -92,15 +107,16 @@ $(document).ready(function() {
 			   data:conc,
 			   success: function(msg){ 
 				   if(msg){
-				   	alert(msg);
+				   	$("#step6").slideDown("slow");	
+				   	//alert(msg);
 						//$("#payment-metod").html('<div id="response_div">&iexcl;Gracias!, su mensaje ha sido enviado.<br /></div>');
 				   }else{
 						//$("#payment-metod").html('<div id="response_div">Su mensaje NO a sido enviado, por favor intente mas tarde.</div>');
 				   }
 			   }
 			});
-			
-			$("#step6").slideDown("slow");		
+
+					
 		}
 	});
 });

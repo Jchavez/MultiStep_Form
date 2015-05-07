@@ -30,8 +30,20 @@
         <form id="payment_online">
           <div id="step0">
             <div class="row">
-             <div class="large-12 medium-12 columns">
-             </div>
+              <div class="large-12 medium-12 columns">
+                <h4>Elegir Opci&oacute;n</h4> 
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <input type="radio" name="optionStep0" value="sponsorship"> Pago de Patrocinio<br>
+                <input type="radio" name="optionStep0" value="participants" checked> Inscripci&oacute;n de Participantes
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 columns">
+                <a class="small button" id="btnNext_step0">Siguiente</a>
+              </div>
             </div>
           </div>
           <!--STEP ONE-->
@@ -262,7 +274,12 @@
                       <input type="hidden" name="hash" value="b2c151dd460f80e3aa41629a92f3410f" id="hash">
                       <input type="hidden" name="time" value="1424876288" id="time">
                       <input type="hidden" name="redirect" value="https://ebg.edu.gt/recepcion-pago-credomatic" id="redirect">
-                      <input type="hidden" name="amount" value="0.10" id="amount">
+                      
+                      <div class="row">
+                        <div class="large-12 medium-12 columns">
+                          <input type="text" name="amount" placeholder="0.00" id="amount">
+                        </div>
+                      </div>
                       <input type="hidden" name="orderid" value="congreso-1646" id="orderid">
                       <input type="hidden" name="processor_id" value="RPGT0885" id="processor_id">
 
@@ -284,6 +301,7 @@
                       <p>Una vez realices tu pago, serás redirigido a otra sección para enviar tus datos!</p>
                     </fieldset>
                     -->
+
                     <div class="row">
                       <div class="large-12 medium-12 columns">
                         <label>No. de Tarjeta</label>
