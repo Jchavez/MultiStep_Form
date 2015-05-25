@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-app lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    ul>li, a{cursor: pointer;}
+    </style>
+    <title>Simple Datagrid with search, sort and paging using AngularJS, PHP, MySQL</title>
+</head>
+<body>
+
+<div ng-controller="customersCrtl">
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">PageSize:
+            <select ng-model="entryLimit" class="form-control">
+                <option>5</option>
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+        </div>
+        <div class="col-md-3">Filter:
+            <input type="text" ng-model="search" ng-change="filter()" placeholder="Filter" class="form-control" />
+        </div>
+        <div class="col-md-7">
+            <h5>Filtered {{ filtered.length }} of {{ totalItems}} total customers</h5>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-12" ng-show="filteredItems > 0">
+            <table class="table">
+            <thead>
+            <th>Email<a ng-click="sort_by('email');"><i class="glyphicon glyphicon-sort"></i></a></th>
+            <th>Nombre<a ng-click="sort_by('name');"><i class="glyphicon glyphicon-sort"></i></a></th>
+            <th>Puesto<a ng-click="sort_by('job');"><i class="glyphicon glyphicon-sort"></i></a></th>
+            <th>Empresa<a ng-click="sort_by('business');"><i class="glyphicon glyphicon-sort"></i></a></th>
+            <th>Telefono<a ng-click="sort_by('telephone');"><i class="glyphicon glyphicon-sort"></i></a></th>
+            <th>Factura<a ng-click="sort_by('name_invoice');"><i class="glyphicon glyphicon-sort"></i></a></th>
+            <th>Nit<a ng-click="sort_by('nit_invoice');"><i class="glyphicon glyphicon-sort"></i></a></th>
+            <th>Dirección Factura<a ng-click="sort_by('address_invoice');"><i class="glyphicon glyphicon-sort"></i></a></th>
+            <th>Contacto<a ng-click="sort_by('contact_invoice');"><i class="glyphicon glyphicon-sort"></i></a></th>
+            <th>E-mail Factura<a ng-click="sort_by('email_invoice');"><i class="glyphicon glyphicon-sort"></i></a></th>
+            <th>Telefono<a ng-click="sort_by('telephone_invoice');"><i class="glyphicon glyphicon-sort"></i></a></th>
+            <th></th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+                    <td>{{data.email}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.job}}</td>
+                    <td>{{data.business}}</td>
+                    <td>{{data.telephone}}</td>
+                    <td>{{data.name_invoice}}</td>
+                    <td>{{data.nit_invoice}}</td>
+                    <td>{{data.address_invoice}}</td>
+                    <td>{{data.contact_invoice}}</td>
+                    <td>{{data.email_invoice}}</td>
+                    <td>{{data.telephone_invoice}}</td>
+                    <td>Ver</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <div class="col-md-12" ng-show="filteredItems == 0">
+            <div class="col-md-12">
+                <h4>No users found</h4>
+            </div>
+        </div>
+        <div class="col-md-12" ng-show="filteredItems > 0">    
+            <div pagination="" page="currentPage" on-select-page="setPage(page)" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
+            
+            
+        </div>
+    </div>
+</div>
+</div>
+<script src="js/angular.min.js"></script>
+<script src="js/ui-bootstrap-tpls-0.10.0.min.js"></script>
+<script src="app/app.js"></script>         
+    </body>
+</html>
